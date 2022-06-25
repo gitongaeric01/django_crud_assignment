@@ -1,11 +1,13 @@
-# from django.shortcuts import render
+from django.shortcuts import render
 
 # # Create your views here.
 # import django
+from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from .models import Post
+from blog.models import Post
+import blog
 
 class PostListView(ListView):
     model = Post
