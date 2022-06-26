@@ -11,20 +11,29 @@ import blog
 
 class PostListView(ListView):
     model = Post
-    fields = '_all_'
-    template_name = 'blog/post_list.html'
+    # fields = '_all_'
+    
+    fields = [
+        'title',
+         'author',
+        'body',
+        'publish',
+    ]
 
+    template_name = 'blog/post_list.html'
 
 class PostCreateView(CreateView):
     model = Post
-    fields = '_all_'
-    # fields = [
-    #     'title',
-    #      'author',
-    #     'body'
-    # ]
+    # fields = '_all_'
+    fields = [
+        'title',
+         'author',
+        'body',
+        'publish',
+ 
+    ]
     template_name = 'blog/post_form.html'
-    # success_url  = reverse_lazy(“blog:all”)
+    success_url  = reverse_lazy('', PostListView.as_view())
 
 
 class PostDetailView(DetailView):
@@ -34,13 +43,21 @@ class PostDetailView(DetailView):
 
 class PostUpdateView(UpdateView):
     model = Post
-    fields = '_all_'
+    # fields = '_all_'
+    fields = [
+        'title',
+         'author',
+        'body',
+        'publish',
+    
+    ]
+
     template_name = 'blog/post_detail.html'
-    # success_url  = reverse_lazy(“blog:all”)
+    success_url  = reverse_lazy('', PostListView.as_view())
     
 class PostDeleteView(DeleteView):
     model = Post
     fields = '_all_'
     template_name = 'blog/post_confirm_delete.html'
-    # success_url  = reverse_lazy(“blog:all”)
+    success_url  = reverse_lazy('', PostListView.as_view())
     
